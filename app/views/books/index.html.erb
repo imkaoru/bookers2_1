@@ -1,0 +1,23 @@
+<div class="container pt-4 px-5 px-sm-0">
+  <% if @new_book.errors.any? %>
+    <div class="errors-box">
+      <p><%= @new_book.errors.count %> errors prohibited this book from being saved:</p>
+
+      <ul>
+        <% @new_book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-3">
+      <%= render partial: 'layouts/side', locals: { user: @logging_in_user, new_book: @new_book } %>
+    </div>
+
+    <div class="col-md-8 offset-md-1">
+      <%= render 'layouts/bookshelf', books: @books %>
+    </div>
+  </div>
+</div>
